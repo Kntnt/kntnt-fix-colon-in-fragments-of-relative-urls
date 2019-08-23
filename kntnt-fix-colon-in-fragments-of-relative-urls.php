@@ -13,7 +13,7 @@
  */
 
 
-defined('ABSPATH') || die;
+defined( 'ABSPATH' ) || die;
 
 /*
  * Colon is allowed in the fragment part of a URI according to RFC 3986
@@ -28,8 +28,8 @@ defined('ABSPATH') || die;
  * `https://`. This is done before KSES runs and the post content is saved
  * to the database.
  */
-add_filter('content_save_pre', function ($content) {
-    return preg_replace_callback( '/((?:id|name)\s*?=\s*?\\\\[\'"]|href\s*?=\s*?\\\\[\'"](?!https?:\/\/)(?:[^\'"])*?#)([^\\\\]*?:(?:[^\\\\])*?)(\\\\[\'"])/', function ($matches) {
-        return $matches[1] . strtr($matches[2], ':', '-') . $matches[3];
-    }, $content);
-}, 9);
+add_filter( 'content_save_pre', function ( $content ) {
+	return preg_replace_callback( '/((?:id|name)\s*?=\s*?\\\\[\'"]|href\s*?=\s*?\\\\[\'"](?!https?:\/\/)(?:[^\'"])*?#)([^\\\\]*?:(?:[^\\\\])*?)(\\\\[\'"])/', function ( $matches ) {
+		return $matches[1] . strtr( $matches[2], ':', '-' ) . $matches[3];
+	}, $content );
+}, 9 );
